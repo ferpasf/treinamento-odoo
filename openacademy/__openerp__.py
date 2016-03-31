@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# © <YEAR(S)> <AUTHOR(S)>
+# © <2016> <Felipe Fernandes>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     "name": "Openacademy",
@@ -26,7 +26,7 @@
 #        "security/ir.model.access.csv",
 #        "views/assets.xml",
 #        "views/report_name.xml",
-#        "views/abcd.xml",
+        "views/openacademy.xml",
 #        "wizard/wizard_model_view.xml",
     ],
     "demo": [

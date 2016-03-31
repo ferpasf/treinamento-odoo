@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- © <2016> <Felipe Fernandes>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+<data>
+
+<!-- MENU SUPERIOR -->
+
+<menuitem name="Open Academy"
+    id="base.menu_openacademy_root"
+    sequence="81"/>
+
+<!-- SUB MENU INFERIOR ESQUERDA Item 1 -->
+
+<menuitem name="Open Academy"
+        id="menu_openacademy_models"
+        parent="base.menu_openacademy_root"
+        sequence="1"/>
+
+<!-- SUB MENU COURSES -->
+
+  <record id="course_action" model="ir.actions.act_window">
+        <field name="name">Cursos</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">course.openacademy</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" eval="False"/>
+        <field name="context">{}</field>
+    </record>
+
+<menuitem action="course_action" id="course_production_action"
+        parent="menu_openacademy_models" sequence="1"/>
+
+<!-- ACOES VISUALIZACOES COURSES -->
+
+    <record model="ir.ui.view" id="course_form_view">
+            <field name="name">course.form</field>
+            <field name="model">course.openacademy</field>
+            <field name="arch" type="xml">
+                <form string="Course Form">
+                    <sheet>
+                        <notebook>
+                            <page string="Informações">
+                                <group>
+                                    <field name="name"/>
+                                    <field name="responsible_id"/>
+                                    <field name="description"/>
+                                </group>
+                            </page>
+                            <page string="Aulas">
+                                <group>
+                                    <field name="session_ids"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+    </record>
+
+    <record model="ir.ui.view" id="course_tree_view">
+            <field name="name">course.tree</field>
+            <field name="model">course.openacademy</field>
+            <field name="arch" type="xml">
+                <tree string="Course Tree">
+                    <field name="name"/>
+                    <field name="responsible_id"/>
+                </tree>
+            </field>
+    </record>
+
+<!-- SUB MENU SESSION -->
+
+  <record id="session_action" model="ir.actions.act_window">
+        <field name="name">Session</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">session.openacademy</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" eval="False"/>
+        <field name="context">{}</field>
+    </record>
+
+<menuitem action="session_action" id="session_production_action"
+        parent="menu_openacademy_models" sequence="1"/>
+
+<!-- ACOES VISUALIZACOES SESSIONS -->
+
+    <record model="ir.ui.view" id="session_form_view">
+            <field name="name">session.form</field>
+            <field name="model">session.openacademy</field>
+            <field name="arch" type="xml">
+                <form string="Session Form">
+                    <sheet>
+                        <notebook>
+                            <page string="Informações">
+                                <group>
+                                    <field name="name"/>
+                                    <field name="course_id"/>
+                                    <field name="instructor_id"/>
+                                </group>
+                                <group>
+                                    <field name="start_date"/>
+                                    <field name="end_date"/>
+                                    <field name="duration"/>
+                                </group>
+                                <group>
+                                    <field name="seats"/>
+                                </group>
+                                </page>
+                                <page string="Descrição">
+                                    <field name="description"/>
+                                </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+    </record>
+
+    <record model="ir.ui.view" id="session_tree_view">
+            <field name="name">session.tree</field>
+            <field name="model">session.openacademy</field>
+            <field name="arch" type="xml">
+                <tree string="Course Tree">
+                    <field name="name"/>
+                    <field name="course_id"/>
+                    <field name="instructor_id"/>
+                </tree>
+            </field>
+    </record>
+
+<!-- ACOES VISUALIZACOES PARTNER (ADICIONANDO NOTEBOOK EM TODOS OS CADASTROS DE PESSOAS EM VENDAS) -->
+
+    <record model="ir.ui.view" id="partner_openacademy_form_view">
+            <field name="name">partner.instructor</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Open Academy">
+                        <notebook>
+                            <page string="Instrutor">
+                                <group>
+                                    <field name="is_instructor"/>
+                                </group>
+                            </page>
+                            <page string="Aulas">
+                                <field name="courses_id" readonly="1">
+                                    <tree  create="false" delete="false" editable="false" >
+                                        <field name="name"/>
+                                        <field name="course_id"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </page>
+                </notebook>
+            </field>
+    </record>
+
+    <!-- ACOES VISUALIZACOES PARTNER (ADICIONANDO NIVEL DE PROFESSORES) -->
+
+    <record model="ir.actions.act_window" id="partner_tag_list_action">
+        <field name="name">Partner Tags</field>
+        <field name="res_model">res.partner.category</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="res.partner.category" id="teacher1">
+        <field name="name">Professor nivel 1</field>
+    </record>
+    <record model="res.partner.category" id="teacher2">
+        <field name="name">Professor nivel 2</field>
+    </record>
+
+</data>
+</openerp>
