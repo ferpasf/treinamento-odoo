@@ -16,6 +16,9 @@
     ],
     "data": [
         "views/openacademy.xml",
+        "security/security.xml",
+        "security/ir.model.access.csv",
+
     ],
     "demo": [
     ],
