@@ -1,7 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- © <2016> <Felipe Fernandes>
-     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
-
 id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
 course_manager,course manager,model_openacademy_course,group_manager,1,1,1,1
 session_manager,session manager,model_openacademy_session,group_manager,1,1,1,1
