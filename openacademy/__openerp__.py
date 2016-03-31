@@ -11,28 +11,14 @@
     "license": "AGPL-3",
     "application": False,
     "installable": True,
-#   "pre_init_hook": "pre_init_hook",
-#   "post_init_hook": "post_init_hook",
-#    "uninstall_hook": "uninstall_hook",
-#    "external_dependencies": {
-#        "python": [],
-#        "bin": [],
-#    },
     "depends": [
         "base",
     ],
     "data": [
-#        "security/some_model_security.xml",
-#        "security/ir.model.access.csv",
-#        "views/assets.xml",
-#        "views/report_name.xml",
         "views/openacademy.xml",
-#        "wizard/wizard_model_view.xml",
     ],
     "demo": [
-#        "demo/res_partner_demo.xml",
     ],
     "qweb": [
-#       "static/src/xml/module_name.xml",
     ]
 }

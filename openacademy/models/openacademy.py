@@ -2,7 +2,9 @@
 # © <2016> <Felipe Fernandes>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
+
 from openerp import models, fields, api
+
 
 class Course(models.Model):
 
@@ -18,6 +20,7 @@ class Course(models.Model):
                                      index=True)
     session_ids = fields.One2many('session.openacademy',
                                   'course_id', string="Aulas")
+
 
 class Session(models.Model):
 
@@ -45,6 +48,7 @@ class Session(models.Model):
         'attendee.openacademy', 'session_id', string="Alunos"
     )
 
+
 class Attendee(models.Model):
 
     _name = "attendee.openacademy"
@@ -58,10 +62,13 @@ class Attendee(models.Model):
     session_id = fields.Many2one('session.openacademy',
                                  ondelete='cascade', string="Aula")
 
+
 class Partner(models.Model):
     _inherit = "res.partner"
 
     _description = "Instrutores"
 
     is_instructor = fields.Boolean("Instrutores", default=False)
-    courses_id = fields.One2many("session.openacademy","instructor_id", ondelete="set Null", string="Aulas")
+    courses_id = fields.One2many("session.openacademy", "instructor_id",
+                                 ondelete="set Null", string="Aulas"
+                                 )
